@@ -1,12 +1,16 @@
-function deretKaskus(n){
+function deretKaskus(i){ // i = parameter
     let deret = [];
-    let i;
     for ( i = 1; i < 10; i++){deret[i] = i*3}
-    if(i%5 == 0){console.log('KAS')} 
+
+    if((i%5 == 0) && (i%6 == 0)){console.log('KASKUS')} //kondisi
     else if (i%6 == 0){console.log('KUS')}
-    else if((i%5 == 0) && (i%6 == 0)){console.log('KASKUS')} 
+    else if (i%5 == 0){console.log('KAS')} 
     else {i};
 }
-console.log(deretKaskus(10));
+// argumen belum dipanggil
+// perlu pakai return?
+//  value argumen != paramet
+//..rest argumen?
+console.log(deretKaskus(10)); // 10 = argumen
 
 //coba deretkaskus ==> mathround(mathfloor()*arguments)
