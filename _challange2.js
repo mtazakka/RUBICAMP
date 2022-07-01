@@ -1,14 +1,12 @@
-//challange 2
-function deretKaskus(n){
-    let n = deretKaskus(n)
-    for ( n = 1; n < 10; n++){ n = n*3}
-    if(n%5 == 0){console.log('KAS')}; 
-    else if(n%6 == 0){console.log('KUS')};
-    else if((n%5 == 0) && (n%6 == 0)){console.log('KASKUS')}
-    else {console.log(n)}
+function deretKaskus(n){ // i = parameter
+    let deret = [];
+    for ( i = 1; i <= n; i++){deret[i] = i*3}
+    return 
+    
+/*
+    if((i%5 == 0) && (i%6 == 0)){console.log('KASKUS')} //kondisi
+    else if (i%6 == 0){console.log('KUS')}
+    else if (i%5 == 0){console.log('KAS')} 
+    else {i}; */
 }
-
 console.log(deretKaskus(10));
-
-// let a
-a = 
