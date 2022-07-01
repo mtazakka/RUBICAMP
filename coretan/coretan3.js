@@ -6,6 +6,7 @@ function deretKaskus(n){
             else if (i%6 == 0){result.push('KUS')}
             else if (i%5 == 0){result.push('KAS')} 
             else {result.push(i)}
+            return j
     }return result
 } ;
     
