@@ -1,26 +1,30 @@
-function isPrime(number) {
-    if (typeof number !== 'number' || !Number.isInteger(number)) {
-      return false;
-    }
-  
-    if (number < 2) {
-      return false;
-    }
-  
-    if (number === 2) {
-      return true;
-    } else if (number % 2 === 0) {
-      return false;
-    }
-   
-    for (var i = 3; i*i <= number; i += 2) {
-      if (number % i === 0) {
-        return false;
+function stringManipulation(word) {
+  const vokal = ["a", "i", "u", "e", "o"];
+  let strings = word.split(" ");
+  let newStrings = strings.map((string) => {
+    if (vokal.includes(string.charAt(0))) {
+      return string;
+    } else {
+      let chars = string.split("");
+      let newChars = string.split("");
+
+      for (const char of chars) {
+        if (!vokal.includes(char)) {
+          let firstChar = newChars.shift();
+          newChars.push(firstChar);
+        } else {
+          break;
+        }
       }
+      let newString = newChars.join("") + "nyo";
+      return newString;
     }
-    return true;
-  
-  }
-  
-  console.log(isPrime(3));
-  console.log(isPrime(15485863));
+  });
+
+  console.log(newStrings.join(" "))
+}
+
+stringManipulation('ayam')
+stringManipulation('bebek')
+
+
