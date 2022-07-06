@@ -3,10 +3,7 @@ function stringManipulation(word) {
     if (vokal.includes(word.charAt(0))) {
       console.log(word)
     } else {
-      let letter = word.split();
-      firstLetter = letter.shift(0);
-      letter.push(firstLetter);
-      word = letter.join('')+"nyo"
+      word = word.substring(1) + word.charAt(0) +'nyo'
       console.log(word)
 }
 }
