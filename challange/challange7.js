@@ -5,7 +5,7 @@ function weirdMultiply(sentence) {
     if (angka.length == 1) {
         return sentence
     } else {
-        return weirdMultiply(angka.reduce((previousValue, currentValue) => previousValue * currentValue))
+        return weirdMultiply(angka.reduce((acc, curr) => acc * curr))
     }
 }
 
