@@ -1,43 +1,35 @@
 function spiral(param1) {
-  let arrNum = []
-  let temp = []
-  let spiral = []
-  let num = 0
+  let matrix = []
+  let array = []
+  let counter = 0
+  
+  
 
   for (var i = 0; i < param1; i++) {
     for (var j = 0; j < param1; j++) {
-      temp.push(num);
-      num++
+      array.push(counter);
+      counter++
     }
-    arrNum.push(temp)
-    temp = []
+    matrix.push(array)
+    array = []
   }
-  for (var i = 0; i < param1; i++) {
-    spiral.push(arrNum[0][i])
-  }
+  let results = []
   let atas = 1;
   let bawah = param1 - 1;
   let kanan = param1 - 1;
   let kiri = 0;
-  while (atas !== bawah && kanan !== kiri) {
-    for (var i = atas; i <= bawah; i++) {
-      spiral.push(arrNum[i][kanan])
-    }
-    kanan--;
-    for (var i = kanan; i >= kiri; i--) {
-      spiral.push(arrNum[bawah][i])
+  for (let k = 0; k < param1; k++){
+    results.push(matrix[0][k])
+  }
+  while (atas <= bawah && kiri <= kanan){
+    for (let i = atas; i <= bawah; i++){
+      results.push(matrix[i][kanan])
+    }kanan--;
+    for (let i = kanan; i >= kiri; i--){
+      results.push(matrix[bawah][i])
     }
     bawah--;
-    for (var i = bawah; i >= atas; i--) {
-      spiral.push(arrNum[i][kiri])
-    }
-    kiri++
-    for (var i = kiri; i <= kanan; i++) {
-      spiral.push(arrNum[atas][i])
-    }
-    atas++
   }
-  console.log(spiral)
+  return results
 }
-
-spiral(5)
+console.log(spiral(5))
