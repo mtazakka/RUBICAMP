@@ -1,33 +1,32 @@
+const readline = require('readline');
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+  prompt: 'tulis kalimatmu disini> '
+});
 
-        if (arr.length === 0) {
-            return;
-        }
-        if (arr.length === 1) {
-            result = result.concat(arr[0]);
-            return; 
-        }
-        for (let i = 0; i < arr.length; i++) {
-            result.push(arr[0][i]);
-        }
-        arr.shift();
-        for (let i = 0; i < arr.length - 1; i++) {
-            result.push(arr[i][arr[i].length - 1]);
-            arr[i].pop()
-            if (arr[i].length === 0) {
-                arr.splice(i, 1);
-                i--;
-            }
-        }
-        for (let i = arr[arr.length - 1].length - 1; i >= 0; i--) {
-            result.push(arr[arr.length - 1][i]);
-        }
-        arr.pop();
-        for (let i = arr.length - 1; i >= 0; i--) {
-            result.push(arr[i][0]);
-            arr[i].shift();
-            if (arr[i].length === 0) {
-                arr.splice(i, 1);
-            }
-        }
-        readLayer(arr);
-    
+function sentencesManipulation(sentence) {
+  const vokal = ["a", "i", "u", "e", "o"];
+  let words = sentence.split(" ");
+  let newWords = [];
+  for (let index = 0; index < words.length; index++) {
+    if (vokal.includes(words[index].charAt(0))) {
+      newWords.push(words[index])
+    } else {
+      words[index] = words[index].substring(1) + words[index].charAt(0) + 'nyo'
+      newWords.push(words[index])
+    }
+  } return(newWords.join(' '))
+}
+
+rl.prompt();
+rl.on('line', (line) => {
+  switch (line.trim()) {
+    case line:
+      console.log(`hasil konversi: ${sentencesManipulation(line)}`)
+  }
+  rl.prompt();
+}).on('close', () => {
+  console.log('Good bye!');
+  process.exit(0);
+});

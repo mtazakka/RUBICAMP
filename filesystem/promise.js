@@ -1,18 +1,18 @@
-// const fs = require('fs');
+const fs = require('fs');
 
-// const bacaFile = (file) => new Promise(function (resolve, reject) { //(file) -> fungsi, jadinya bacaFile(nama file) saat d invoke
-//     fs.readFile(file, 'utf-8', (err, data) => {
-//         // console.log('lagi baca')
-//         if (err) { reject(err) } else {    //selain pake reject bisa pakai throw --> throw'gagal bro'
-//             resolve(data)
-//         }
-//     })
-// });
+const bacaFile = (file) => new Promise(function (resolve, reject) { //(file) -> fungsi, jadinya bacaFile(nama file) saat d invoke
+    fs.readFile(file, 'utf-8', (err, data) => {
+        // console.log('lagi baca')
+        if (err) { reject(err) } else {    //selain pake reject bisa pakai throw --> throw'gagal bro'
+            resolve(data)
+        }
+    })
+});
 
 
-// // bacaFile('data.txt').then((hasil) => {                   // bacaFile()-> di invoke, then utk nangkap hasil 
-// //     console.log('ini hasil baca', hasil)
-// //     console.log('terakhir')
+bacaFile('data.txt').then((hasil) => {                   // bacaFile()-> di invoke, then utk nangkap hasil 
+    console.log('ini hasil baca', hasil)
+    console.log('terakhir')
 
 // //     bacaFile('satu.txt').then((hasil) => {              //bacaFile di dalam bacaFile
 // //         console.log('ini hasil baca', hasil)
