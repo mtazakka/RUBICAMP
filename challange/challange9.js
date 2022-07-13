@@ -2,7 +2,6 @@ function spiral(param1) {
     let matrix = []
     let array = []
     let counter = 0
-
     for (let i = 0; i < param1; i++) {
         for (let j = 0; j < param1; j++) {
             array.push(counter);
@@ -27,10 +26,17 @@ function spiral(param1) {
             results.push(matrix[bawah][i])
         }
         bawah--;
+        for (let i = bawah; i >= atas; i--) {
+            results.push(matrix[i][kiri])
+        }
+        kiri++;
+        for (let i = kiri; i <= kanan; i++) {
+            results.push(matrix[kiri][i])
+        }
+        atas++
     }
     console.log(results)
 }
-
 spiral(5)
 spiral(6)
 spiral(7)
