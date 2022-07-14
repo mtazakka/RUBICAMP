@@ -2,31 +2,33 @@ const readline = require('readline');
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
-  prompt: 'tulis kalimatmu disini> '
+  // prompt: 'Pertanyaan: '
 });
-
-function sentencesManipulation(sentence) {
-  const vokal = ["a", "i", "u", "e", "o"];
-  let words = sentence.split(" ");
-  let newWords = [];
-  for (let index = 0; index < words.length; index++) {
-    if (vokal.includes(words[index].charAt(0))) {
-      newWords.push(words[index])
-    } else {
-      words[index] = words[index].substring(1) + words[index].charAt(0) + 'nyo'
-      newWords.push(words[index])
-    }
-  } return(newWords.join(' '))
-}
-
-rl.prompt();
-rl.on('line', (line) => {
-  switch (line.trim()) {
-    case line:
-      console.log(`hasil konversi: ${sentencesManipulation(line)}`)
+let num1 = Math.floor((Math.random()*10)+1)
+let num2 = Math.floor((Math.random()*10)+1)
+let answer = num1 + num2
+// console.log('Selamat datang di permainan Tebak Kata, silahkan isi dengan jawaban yang benar ya!')
+rl.question(`What is ${num1} + ${num2}?\n`, //Pertanyaan: Siapakah presiden kita saat ini?
+(userInput)=>{
+  if(userInput == answer){
+    rl.close()
   }
-  rl.prompt();
-}).on('close', () => {
-  console.log('Good bye!');
-  process.exit(0);
 });
+
+
+// rl.prompt();
+
+// rl.on('line', (line) => {
+//   switch (line.trim()) {
+//     case 'hello':
+//       console.log('world!'); // kasih jawaban Selamat anda Benar, kayak baca objek
+//       break;
+//     default:
+//       console.log(`Say what? I might have h eard '${line.trim()}'`); //anda kurang beruntung + kasih jawaban benar +
+//       break;
+//   }
+//   rl.prompt();
+// }).on('close', () => {
+//   console.log('Have a great day!');
+//   process.exit(0);
+// });
