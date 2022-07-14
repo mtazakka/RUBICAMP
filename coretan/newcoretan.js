@@ -1,48 +1,48 @@
-function spiral(param1) {
-    let matrix = []
-    let array = []
-    let counter = 0
-    let result =[]
-
-    for (var i = 0; i < param1; i++) {
-        for (var j = 0; j < param1; j++) {
-            array.push(counter);
-            counter++
+const readline = require('readline');
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+  prompt: 'Jawaban: '
+});
+let num1 = Math.floor((Math.random() * 10) + 1)
+let num2 = Math.floor((Math.random() * 10) + 1)
+let answer = num1 + num2
+// console.log('Selamat datang di permainan Tebak Kata, silahkan isi dengan jawaban yang benar ya!')
+rl.question(`What is ${num1} + ${num2}?\nTebakan: `,
+  (userInput) => {
+    if (userInput == answer) {
+      rl.close()
+    } else {
+      rl.setPrompt(`Incorrect respone, please try again \n`)
+      rl.prompt()
+      rl.on('line', (userInput) => {
+        if (userInput == answer) {
+          rl.close()
+        } else {
+          rl.setPrompt(`You answer of ${userInput} is still incorrect \n`)
+          rl.prompt()
         }
-        matrix.push(array)
-        array = []
+      })
+    }
+  });
+rl.on('close', () => {
+  console.log('Correct!!')
+})
 
-    } if (array.length === 0) {
-        return;
-    }
-    if (array.length === 1) {
-        result = result.concat(array[0]);
-        return;
-    }
-    for (let i = 0; i < array.length; i++) {
-        result.push(array[0][i]);
-    }
-    array.shift();
-    for (let i = 0; i < array.length - 1; i++) {
-        result.push(array[i][array[i].length - 1]);
-        array[i].pop()
-        if (array[i].length === 0) {
-            array.splice(i, 1);
-            i--;
-        }
-    }
-    for (let i = array[array.length - 1].length - 1; i >= 0; i--) {
-        result.push(array[array.length - 1][i]);
-    }
-    array.pop();
-    for (let i = array.length - 1; i >= 0; i--) {
-        result.push(array[i][0]);
-        array[i].shift();
-        if (array[i].length === 0) {
-            array.splice(i, 1);
-        }
-    }
-    return result
-}
 
-console.log(spiral(5))
+// rl.prompt();
+
+// rl.on('line', (line) => {
+//   switch (line.trim()) {
+//     case 'hello':
+//       console.log('world!'); // kasih jawaban Selamat anda Benar, kayak baca objek
+//       break;
+//     default:
+//       console.log(`Say what? I might have h eard '${line.trim()}'`); //anda kurang beruntung + kasih jawaban benar +
+//       break;
+//   }
+//   rl.prompt();
+// }).on('close', () => {
+//   console.log('Have a great day!');
+//   process.exit(0);
+// });

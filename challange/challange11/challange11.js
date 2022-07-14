@@ -8,9 +8,6 @@ const rl = readline.createInterface({
 })
 console.log('Selamat datang di permainan Tebak Kata, silahkan isi dengan jawaban yang benar ya!\n')
 let i = 0;
-// let soalTambahan = 'Sebutkan kota yang memiliki julukan kota Intan?'
-// let jawabanTambahan = 'garut'
-
 rl.question(`Pertanyaan: ${objek[i].definition}?\nTebakan:`,
     (userInput) => {
         if (userInput == objek[i].term) {
@@ -35,10 +32,11 @@ rl.question(`Pertanyaan: ${objek[i].definition}?\nTebakan:`,
                         }
                     }
                     else {
+                        rl.setPrompt(`Wkwkwkwk, Anda kurang beruntung! \nTebakan:`)
                         rl.prompt()
                     }
                 })
-                
+
             }
         } else {
             rl.setPrompt(`Wkwkwkwk, Anda kurang beruntung! \nTebakan:`)
