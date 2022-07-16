@@ -15,7 +15,8 @@ else {
     console.log('Untuk bermain, jawablah dengan jawaban yang sesuai.')
     console.log(`Gunakan 'skip' untuk menangguhkan pertanyaannya, dan di akhir pertanyaan akan ditanyakan lagi.\n`)
 
-    let j = 0;
+    // let i = 0;
+    var j = 0;
 
     rl.question(`Pertanyaan: ${objek[0].definition}?\nJawaban:`,
         (userInput) => {
@@ -65,6 +66,12 @@ else {
                             rl.close()
                             console.log('\nAnda Berhasil!!\n')
                         } 
+                        // else if (userInput === 'skip') {
+                        //     j = 0
+                        //     objek.shift()
+                        //     rl.setPrompt(`Pertanyaan: ${objek[0].definition}?\nJawaban:`,)
+                        //     rl.prompt()
+                        // }
                         else {
                             rl.setPrompt(`Pertanyaan: ${objek[0].definition}?\nJawaban:`,)
                             rl.prompt()
