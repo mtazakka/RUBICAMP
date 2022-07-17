@@ -1,68 +1,40 @@
+function list(){
+    console.log(`$ node todo.js <command> `)
+    console.log(`$ node todo.js list `)
+    console.log(`$ node todo.js task <task_id>`)
+    console.log(`$ node todo.js add <task_content>`)
+    console.log(`$ node todo.js delete <task_id>`)
+    console.log(`$ node todo.js complete <task_id>`)
+    console.log(`$ node todo.js uncomplete <task_id>`)
+    console.log(`$ node todo.js list:outstanding asc|desc`)
+    console.log(`$ node todo.js list:complete asc|desc`)
+    console.log(`$ node todo.js tag<task_id> <tag_name_1> <tag_name_2>...<tag_name_N>`)
+    console.log(`$ node todo.js filter:<tag_name>`)
+    return
+}
 const fs = require('fs');
-let data = fs.readFileSync('data.json', 'utf-8')
-var objek = (JSON.parse(data))
-const readline = require('readline');
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-})
-console.log('Selamat datang di permainan Tebak Kata, silahkan isi dengan jawaban yang benar ya!\n')
-let i = 0;
-// let soalTambahan = 'Sebutkan kota yang memiliki julukan kota Intan?'
-// let jawabanTambahan = 'garut'
-
-rl.question(`Pertanyaan: ${objek[i].definition}?\nTebakan:`,
-    (userInput) => {
-        if (userInput == objek[i].term) {
-            console.log('Selamat Anda Benar!\n')
-            i++
-            if (i >= objek.length) {
-                rl.close()
-                console.log('Hore Anda Menang!\n')
-            } else {
-                rl.setPrompt(`Pertanyaan: ${objek[i].definition}?\nTebakan:`,)
-                rl.prompt()
-                rl.on('line', (userInput) => {
-                    if (userInput === objek[i].term) {
-                        console.log('Selamat Anda Benar!')
-                        i++;
-                        if (i >= objek.length) {
-                            rl.close()
-                            console.log('Hore Anda Menang!\n')
-                        } else {
-                            rl.setPrompt(`Pertanyaan: ${objek[i].definition}?\nTebakan:`,)
-                            rl.prompt()
-                        }
-                    }
-                    else {
-                        rl.prompt()
-                    }
-                })
-                
-            }
-        } else {
-            rl.setPrompt(`Wkwkwkwk, Anda kurang beruntung! \nTebakan:`)
-            rl.prompt()
-            rl.on('line', (userInput) => {
-                if (userInput === objek[i].term) {
-                    console.log('Selamat Anda Benar!\n')
-                    i++;
-                    if (i >= objek.length) {
-                        rl.close()
-                        console.log('Hore Anda Menang!\n')
-                    } else {
-                        rl.setPrompt(`Pertanyaan: ${objek[i].definition}?\nTebakan:`,)
-                        rl.prompt()
-                    }
-                }
-                else {
-                    rl.prompt()
-                }
-            })
-
-        }
-    }
-
-
-
-)
+let database = fs.readFileSync('todo.json', 'utf-8')
+let inputData = process.argv[2]
+switch (new list().getinputData()) {
+    case list:
+      inputData = 'add'
+      break;
+    case 1:
+      inputData = "task";
+      break;
+    case 2:
+      inputData = "TuesinputData";
+      break;
+    case 3:
+      inputData = "WednesinputData";
+      break;
+    case 4:
+      inputData = "ThursinputData";
+      break;
+    case 5:
+      inputData = "FriinputData";
+      break;
+    case  6:
+      inputData = "SaturinputData";
+  }
+list()
