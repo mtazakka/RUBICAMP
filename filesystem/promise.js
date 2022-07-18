@@ -12,7 +12,7 @@ const bacaFile = (file) => new Promise(function (resolve, reject) { //(file) -> 
 
 bacaFile('data.txt').then((hasil) => {                   // bacaFile()-> di invoke, then utk nangkap hasil 
     console.log('ini hasil baca', hasil)
-    console.log('terakhir')
+    console.log('terakhir')})
 
 // //     bacaFile('satu.txt').then((hasil) => {              //bacaFile di dalam bacaFile
 // //         console.log('ini hasil baca', hasil)
@@ -41,6 +41,6 @@ bacaFile('data.txt').then((hasil) => {                   // bacaFile()-> di invo
 //     console.log('ini error', err)
 // })
 
-setTimeout(function(){
-    console.log('ini keluar setelah dua detik')
-}, 2000)
+// setTimeout(function(){
+//     console.log('ini keluar setelah dua detik')
+// }, 2000)
