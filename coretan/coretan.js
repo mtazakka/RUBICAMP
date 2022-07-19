@@ -1,4 +1,6 @@
-const fs = require('fs');
-let bacaData = fs.readFileSync('todo.json', 'utf-8')
-console.log(bacaData)
+if(process.argv[2].includes('filter:')){
+    cetak = process.argv[2].slice(7)
+    console.log (cetak)
 
+
+}
