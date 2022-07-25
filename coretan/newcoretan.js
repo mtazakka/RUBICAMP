@@ -1,48 +1,32 @@
-const readline = require('readline');
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-  prompt: 'Jawaban: '
-});
-let num1 = Math.floor((Math.random() * 10) + 1)
-let num2 = Math.floor((Math.random() * 10) + 1)
-let answer = num1 + num2
-// console.log('Selamat datang di permainan Tebak Kata, silahkan isi dengan jawaban yang benar ya!')
-rl.question(`What is ${num1} + ${num2}?\nTebakan: `,
-  (userInput) => {
-    if (userInput == answer) {
-      rl.close()
-    } else {
-      rl.setPrompt(`Incorrect respone, please try again \n`)
-      rl.prompt()
-      rl.on('line', (userInput) => {
-        if (userInput == answer) {
-          rl.close()
-        } else {
-          rl.setPrompt(`You answer of ${userInput} is still incorrect \n`)
-          rl.prompt()
-        }
-      })
-    }
-  });
-rl.on('close', () => {
-  console.log('Correct!!')
-})
+class Rectangle {
+  constructor(height, width) {
+    this.height = height
+    this.width = width
+  }
+  calcArea() {
+    return this.height * this.width
+  }
+}
 
+const square = new Rectangle(5, 5)  /*harus pakai new karena prototype */
+let luas = square.calcArea()
+console.log(luas)
 
-// rl.prompt();
-
-// rl.on('line', (line) => {
-//   switch (line.trim()) {
-//     case 'hello':
-//       console.log('world!'); // kasih jawaban Selamat anda Benar, kayak baca objek
-//       break;
-//     default:
-//       console.log(`Say what? I might have h eard '${line.trim()}'`); //anda kurang beruntung + kasih jawaban benar +
-//       break;
-//   }
-//   rl.prompt();
-// }).on('close', () => {
-//   console.log('Have a great day!');
-//   process.exit(0);
-// });
+class Point {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+  print(){
+    return this.x, this.y
+  }
+  static distance(p1, p2) {
+    const dx = p1.x - p2.x;
+    const dy = p1.y - p2.y;
+    return Math.hypot(dx, dy)
+  }
+}
+const p1 = new Point(1, 1)
+const p2 = new Point(5, 4)
+let calc = Point.distance(p1, p2)
+console.log(`distance from ${this.p1()} and ${this.p2()} is ${calc}`)

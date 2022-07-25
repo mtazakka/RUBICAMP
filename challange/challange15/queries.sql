@@ -45,7 +45,11 @@ INSERT INTO pembelajaran(nim, id_matakuliah, id_dosen, nilai) values
 SELECT mahasiswa.nama, sum(matakuliah.sks) as 'jumlah sks' FROM mahasiswa, matakuliah, pembelajaran ON mahasiswa.nim = pembelajaran.nim AND matakuliah.id_matakuliah = pembelajaran.id_matakuliah GROUP BY mahasiswa.nim HAVING sum(matakuliah.sks) > 10;
 
 --5 Mahasiswa mengontrak data mining--
-SELECT mahasiswa.nama, matakuliah.nama FROM mahasiswa, matakuliah, pembelajaran ON mahasiswa.nim = pembelajaran.nim AND matakuliah.id_matakuliah = pembelajaran.id_matakuliah WHERE matakuliah.nama = 'data mining';
+SELECT mahasiswa.nama, matakuliah.nama 
+FROM mahasiswa, matakuliah, pembelajaran 
+ON mahasiswa.nim = pembelajaran.nim AND 
+matakuliah.id_matakuliah = pembelajaran.id_matakuliah 
+WHERE matakuliah.nama = 'data mining';
 
 --6 jumlah mahasiswa untuk setiap dosen--
 SELECT dosen.nama, count(DISTINCT mahasiswa.nim) as 'jumlah mahasiswa' FROM mahasiswa, dosen, pembelajaran ON mahasiswa.nim = pembelajaran.nim AND dosen.id_dosen = pembelajaran.id_dosen GROUP BY dosen.id_dosen;
