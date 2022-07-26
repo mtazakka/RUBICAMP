@@ -1,31 +1,51 @@
-function production(min, max) {
-    return Math.floor(Math.random() * (max - min) + min);
-  }
-  
-  console.log(production(1, 30))
+ class Tyre {
+    constructor(quantity, type){
+    this.quantity = quantity;
+    this.type = type}
 
+}
+const tyre1 = new Tyre (4, 'Tube')
+const tyre2 = new Tyre (4, 'Tubeless')
 
-class CarFactory {
-    
+class CarFactory { 
+    production(min, max) {
+        return Math.floor(Math.random() * (max - min) + min);
+      }
+      
     }
 
+class Car {
 
-class Car{
-    constructor(name, colour, tyre, chair, door){
+    constructor(name, colour, tyre, chair, door, /*year*/){
         this.name = name;
         this.colour = colour;
         this.tyre = tyre;
         this.chair = chair;
-        this.door = door;}
+        this.door = door;
+        // this.year = year
+    }
 }
-const avanza = new Car('avanza','merah','ducati','4','4')
+
+//year  kita overide
+class Civic extends Car{
+    constructor(year){
+    super('Civic RS', 'red', tyre1, '8', '4', year )}
+}
+
+class Mobilio extends Car{
+    constructor(year){
+    super('Mobilio RS', 'red', tyre1, '8', '4', year )}
+}
+
+class Brio extends Car{
+    constructor(year){
+    super('Brio E', 'red', tyre1, '8', '4', year )}
+}
+
+const civic = new Civic()
+console.log(civic)
 
 
-console.log(avanza)
-
-// class tyre(){
-
-// }
 // function carWarranty(name, age){
 //     let carWarranty = {};
 //     carWarranty.name = name;

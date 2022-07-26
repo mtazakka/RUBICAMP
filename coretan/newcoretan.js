@@ -17,7 +17,7 @@ class Point {
     this.x = x;
     this.y = y;
   }
-  print(){
+  print() {
     return this.x, this.y
   }
   static distance(p1, p2) {
