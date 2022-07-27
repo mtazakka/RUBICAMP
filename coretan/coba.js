@@ -6,58 +6,63 @@
 }
 const tyre1 = new Tyre (4, 'Tube')
 const tyre2 = new Tyre (4, 'Tubeless')
+const currentYear = new Date().getFullYear(); /* ntar kita coba di carFactory*/
+const min = 1;
+const max = 4;
 
 class CarFactory { 
-    production(min, max) {
-        return Math.floor(Math.random() * (max - min) + min);
+    static production(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
       }
       
     }
 
 class Car {
-
-    constructor(name, colour, tyre, chair, door, /*year*/){
+    constructor(name, colour, tyre, chair, door, warranty, productionYear){
         this.name = name;
         this.colour = colour;
         this.tyre = tyre;
         this.chair = chair;
         this.door = door;
-        // this.year = year
+        this.warranty = warranty;
+        this.productionYear = productionYear
+    }
+    carWarranty(currentYear){
+        if(this.warranty >= currentYear - this.productionYear){
+            console.log (`This ${this.name} ${this.productionYear}'s Warranty is available`)
+        }else{
+            console.log (`This ${this.name} ${this.productionYear}'s Warranty is unavailable`)
+        }
     }
 }
 
 //year  kita overide
 class Civic extends Car{
-    constructor(year){
-    super('Civic RS', 'red', tyre1, '8', '4', year )}
+    constructor(productionYear){
+    super('Civic RS', 'red', tyre1, '8', '4','4', productionYear )
+    this.carWarranty(currentYear)
+    
+}
 }
 
 class Mobilio extends Car{
-    constructor(year){
-    super('Mobilio RS', 'red', tyre1, '8', '4', year )}
+    constructor(productionYear){
+    super('Mobilio RS', 'red', tyre1, '8', '4','5', productionYear )
+    this.carWarranty(currentYear)
+}
 }
 
 class Brio extends Car{
-    constructor(year){
-    super('Brio E', 'red', tyre1, '8', '4', year )}
+    constructor(productionYear){
+    super('Brio E', 'red', tyre1, '8', '4','3', productionYear )
+    this.carWarranty(currentYear)
+}
 }
 
-const civic = new Civic()
+const civic = new Civic(2012)
+const mobilio = new Mobilio (2021)
+const brio = new Brio (2022)
+
 console.log(civic)
-
-
-// function carWarranty(name, age){
-//     let carWarranty = {};
-//     carWarranty.name = name;
-//     carWarranty.age = age;
-//     carWarranty.claim = function (claimed){
-//         this.age += claimed;
-//         console.log(`Halo ${this.name}, please claim warranty`)
-//     }
-
-    
-//     return carWarranty;
-// }
-
-// let warranty = carWarranty(namaMobil, umur)
-// console.log(warranty)
+console.log(mobilio)
+console.log(brio)
