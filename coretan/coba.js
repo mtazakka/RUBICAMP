@@ -1,68 +1,107 @@
- class Tyre {
-    constructor(quantity, type){
-    this.quantity = quantity;
-    this.type = type}
-
-}
-const tyre1 = new Tyre (4, 'Tube')
-const tyre2 = new Tyre (4, 'Tubeless')
-const currentYear = new Date().getFullYear(); /* ntar kita coba di carFactory*/
-const min = 1;
-const max = 4;
-
-class CarFactory { 
-    static production(min, max) {
-        return Math.floor(Math.random() * (max - min + 1) + min);
-      }
-      
+class Tyre {
+    constructor(quantity, type) {
+        this.quantity = quantity;
+        this.type = type
     }
 
+}
+const tyre1 = new Tyre(4, 'Tube')
+const tyre2 = new Tyre(4, 'Tubeless')
+// const currentYear = new Date().getFullYear(); /* ntar kita coba di carFactory*/ 
+
+function ManufactureNumber() {
+    let min = 1000;
+    let max = 9000;
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+function productionYear() {
+    let min = 2015;
+    let max = 2022;
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
 class Car {
-    constructor(name, colour, tyre, chair, door, warranty, productionYear){
+    constructor(name, manufactureNumber, tyre, chair, door, warranty, productionYear) {
         this.name = name;
-        this.colour = colour;
+        this.manufactureNumber = manufactureNumber;
         this.tyre = tyre;
         this.chair = chair;
         this.door = door;
         this.warranty = warranty;
         this.productionYear = productionYear
     }
-    carWarranty(currentYear){
-        if(this.warranty >= currentYear - this.productionYear){
-            console.log (`This ${this.name} ${this.productionYear}'s Warranty is available`)
-        }else{
-            console.log (`This ${this.name} ${this.productionYear}'s Warranty is unavailable`)
+    carWarranty(currentYear) {
+        if (this.warranty >= currentYear - this.productionYear) {
+          console.log(`In ${currentYear}, the warranty is available`)
+        } else {
+          console.log(`In ${currentYear}, the warranty is unavailable`)
+        }
+      }
+}
+
+class Civic extends Car {
+    constructor() {
+        super('Civic RS', ManufactureNumber(), tyre1, '8', '4', '4', productionYear())
+
+    }
+}
+
+class Mobilio extends Car {
+    constructor() {
+        super('Mobilio RS', ManufactureNumber(), tyre1, '8', '4', '5', productionYear())
+    }
+}
+
+class Brio extends Car {
+    constructor() {
+        super('Brio E', ManufactureNumber(), tyre1, '8', '4', '3', productionYear())
+    }
+}
+
+class CarFactory {
+    constructor() {
+        this.product = [];
+    }
+    static production() {
+        let min = 1;
+        let max = 5;
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+    produceCivic() {
+        for (let index = 0; index < CarFactory.production(); index++) {
+           this.product.push(new Civic())
+        }
+    }
+    produceMobilio() {
+        for (let i = 0; i < CarFactory.production(); i++) {
+            this.product.push(new Mobilio())
+        }
+    }
+    produceBrio() {
+        for (let i = 0; i < CarFactory.production(); i++) {
+            this.product.push(new Brio())
+        }
+    }
+    
+    checkProduct(){
+        console.log(`Total produced cars is ${this.product.length}, specifially:`)
+        for (let i= 0; i <= this.product.length-1; i++){
+            console.log(this.product[i])
+        }
+        }
+    checkWarranty(currentYear){
+        for (let i= 0; i <= this.product.length-1; i++){
+            console.log(`${this.product[i].name} ${this.product[i].manufactureNumber} is `)
+            this.product[i].carWarranty(currentYear)
         }
     }
 }
 
-//year  kita overide
-class Civic extends Car{
-    constructor(productionYear){
-    super('Civic RS', 'red', tyre1, '8', '4','4', productionYear )
-    this.carWarranty(currentYear)
-    
-}
-}
 
-class Mobilio extends Car{
-    constructor(productionYear){
-    super('Mobilio RS', 'red', tyre1, '8', '4','5', productionYear )
-    this.carWarranty(currentYear)
-}
-}
-
-class Brio extends Car{
-    constructor(productionYear){
-    super('Brio E', 'red', tyre1, '8', '4','3', productionYear )
-    this.carWarranty(currentYear)
-}
-}
-
-const civic = new Civic(2012)
-const mobilio = new Mobilio (2021)
-const brio = new Brio (2022)
-
-console.log(civic)
-console.log(mobilio)
-console.log(brio)
+let honda = new CarFactory()
+honda.produceCivic()
+honda.produceMobilio()
+honda.produceBrio()
+honda.checkProduct()
+honda.checkWarranty(2022)

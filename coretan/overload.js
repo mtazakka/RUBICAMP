@@ -3,11 +3,10 @@ class Tyre {
     this.quantity = quantity;
     this.type = type
   }
-
 }
 const tyre1 = new Tyre(4, 'Tube')
 const tyre2 = new Tyre(4, 'Tubeless')
-const currentYear = new Date().getFullYear(); /* ntar kita coba di carFactory*/
+const currentYear = new Date().getFullYear();
 
 function ManufactureNumber() {
   let min = 1000;
@@ -33,35 +32,31 @@ class Car {
   }
   carWarranty(currentYear) {
     if (this.warranty >= currentYear - this.productionYear) {
-      console.log(`In ${currentYear}, the warranty is available`)
+      console.log(`In ${currentYear}, ${this.name} ${this.manufactureNumber} warranty is available`)
     } else {
-      console.log(`In ${currentYear}, the warranty is unavailable`)
+      console.log(`In ${currentYear}, ${this.name} ${this.manufactureNumber} the warranty is unavailable`)
     }
   }
 }
-
 class Civic extends Car {
   constructor() {
     super('Civic RS', ManufactureNumber(), tyre1, '8', '4', '4', productionYear())
-    // this.carWarranty(currentYear)
+
 
   }
 }
-
 class Mobilio extends Car {
   constructor() {
     super('Mobilio RS', ManufactureNumber(), tyre2, '8', '4', '5', productionYear())
-    // this.carWarranty(currentYear)
+
   }
 }
-
 class Brio extends Car {
   constructor() {
     super('Brio E', ManufactureNumber(), tyre1, '8', '4', '3', productionYear())
-    // this.carWarranty(currentYear)
+
   }
 }
-
 class CarFactory {
   constructor() {
     this.product = [];
@@ -71,32 +66,31 @@ class CarFactory {
     let max = 5;
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
-  produceCivic(productionYear) {
+  produceCivic() {
     for (let i = 0; i < CarFactory.production(); i++) {
-      this.product.push(new Civic(productionYear))
-      console.log(new Civic(productionYear))
-      new Civic(productionYear).carWarranty(currentYear)
+      this.product.push(new Civic())
+      console.log(new Civic())
+      new Civic().carWarranty(currentYear)
     }
     console.log(`Total Civic produced is ${this.product.length}`)
   }
-  produceMobilio(productionYear) {
+  produceMobilio() {
     for (let i = 0; i < CarFactory.production(); i++) {
-      this.product.push(new Mobilio(productionYear))
-      console.log(new Mobilio(productionYear))
+      this.product.push(new Mobilio())
+      console.log(new Mobilio())
       new Mobilio().carWarranty(currentYear)
     }
     console.log(`Total Mobilio produced is ${this.product.length}`)
   }
-  produceBrio(productionYear) {
+  produceBrio() {
     for (let i = 0; i < CarFactory.production(); i++) {
-      this.product.push(new Brio(productionYear))
-      console.log(new Brio(productionYear))
+      this.product.push(new Brio())
+      console.log(new Brio())
       new Brio().carWarranty(currentYear)
     }
     console.log(`Total Brio produced is ${this.product.length}`)
   }
 }
-
 new CarFactory().produceCivic()
 new CarFactory().produceBrio()
 new CarFactory().produceMobilio()
