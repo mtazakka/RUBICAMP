@@ -1,32 +1,34 @@
-class Rectangle {
-  constructor(height, width) {
-    this.height = height
-    this.width = width
+
+class CarFactory {
+  constructor() {
+    this.product = [1,2,3];
   }
-  calcArea() {
-    return this.height * this.width
+
+  produceCivic() {
+    for (let index = 0; index < CarFactory.production(); index++) {
+      this.product.push(2)
+      // console.log(new Civic(productionYear))
+      // new Civic(productionYear).carWarranty(currentYear)
+    }
+    // console.log(`Total Civic produced is ${this.product}`)
   }
+  static production() {
+    let min = 1;
+    let max = 5;
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
+  checkProduct() {
+    console.log(`Jumlah produksi Civic adalah ${this.product.length}:`)
+    for (let index = 0; index < this.product.length; index++) {
+      console.log(`Civic ${this.product[index]}`)
+    }
+  }
+
+
+
+
 }
 
-const square = new Rectangle(5, 5)  /*harus pakai new karena prototype */
-let luas = square.calcArea()
-console.log(luas)
-
-class Point {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-  }
-  print() {
-    return this.x, this.y
-  }
-  static distance(p1, p2) {
-    const dx = p1.x - p2.x;
-    const dy = p1.y - p2.y;
-    return Math.hypot(dx, dy)
-  }
-}
-const p1 = new Point(1, 1)
-const p2 = new Point(5, 4)
-let calc = Point.distance(p1, p2)
-console.log(`distance from ${this.p1()} and ${this.p2()} is ${calc}`)
+new CarFactory().produceCivic()
+new CarFactory().checkProduct()
