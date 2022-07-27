@@ -89,7 +89,7 @@ class CarFactory {
             console.log(this.product[i])
         }
         }
-    checkWarranty(currentYear){
+    simulasiGaransi(currentYear){
         for (let i= 0; i <= this.product.length-1; i++){
             console.log(`${this.product[i].name} ${this.product[i].manufactureNumber}`)
             this.product[i].carWarranty(currentYear)
@@ -103,4 +103,4 @@ honda.produceCivic()
 honda.produceMobilio()
 honda.produceBrio()
 honda.checkProduct()
-honda.checkWarranty(2022)
+honda.simulasiGaransi(2022)
