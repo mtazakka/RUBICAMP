@@ -91,7 +91,7 @@ class CarFactory {
         }
     checkWarranty(currentYear){
         for (let i= 0; i <= this.product.length-1; i++){
-            console.log(`${this.product[i].name} ${this.product[i].manufactureNumber} is `)
+            console.log(`${this.product[i].name} ${this.product[i].manufactureNumber}`)
             this.product[i].carWarranty(currentYear)
         }
     }
