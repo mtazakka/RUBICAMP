@@ -26,7 +26,7 @@ export class MesinHitung {
         return this
     }
     squareRoot() {
-        this.x = Math.pow(this.x, 0.5)
+        this.x = Math.sqrt(this.x)
         return this
     }
     exponent(number) {
