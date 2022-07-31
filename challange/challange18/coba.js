@@ -33,7 +33,7 @@ rl.on('line', (userInput) => {
             rl.question(`${garis}\nmasukkan salah satu no. dari opsi diatas:`,(userInput) => {
                 switch (userInput){
                     case '1':
-                        console.log(aku)
+                        console.log(`aku`)
                 }
             }
              
