@@ -335,23 +335,23 @@ class Matakuliah {
         const tambahMatakuliah = `INSERT INTO matakuliah(id_matakuliah, nama, sks, id_jurusan) values (?, ? ,? ,?)`
         console.log(garis)
         console.log('lengkapi data di bawah ini:')
-            rl.question('id matakuliah  : ', (id_matakuliah) => {
-                rl.question('nama           : ', (nama) => {
-                    rl.question(`sks            :`, (sks) => {
-                        rl.question('id jurusan     :', (jurusan) => {
-                            db.get(tambahMatakuliah, [id_matakuliah, nama, sks, jurusan], (err) => {
-                                if (err) {
-                                    throw err
-                                } else {
-                                    Matakuliah.read()
-                                }
-                            })
+        rl.question('id matakuliah  : ', (id_matakuliah) => {
+            rl.question('nama           : ', (nama) => {
+                rl.question(`sks            :`, (sks) => {
+                    rl.question('id jurusan     :', (jurusan) => {
+                        db.get(tambahMatakuliah, [id_matakuliah, nama, sks, jurusan], (err) => {
+                            if (err) {
+                                throw err
+                            } else {
+                                Matakuliah.read()
+                            }
                         })
                     })
-
                 })
+
             })
-        
+        })
+
     }
     static hapus() {
         const hapusMatakuliah = 'DELETE FROM matakuliah WHERE matakuliah.id_matakuliah = ?'
@@ -412,23 +412,23 @@ class Pembelajaran {
         const tambahPembelajaran = `INSERT INTO pembelajaran(nim, id_matakuliah, id_dosen, nilai) values (?, ? ,? ,?)`
         console.log(garis)
         console.log('lengkapi data di bawah ini:')
-            rl.question('NIM        : ', (nim) => {
-                rl.question('id matakuliah  : ', (id_matakuliah) => {
-                    rl.question(`id dosen    :`, (id_dosen) => {
-                        rl.question('nilai      :', (nilai) => {
-                            db.get(tambahPembelajaran, [nim, id_matakuliah, id_dosen, nilai], (err) => {
-                                if (err) {
-                                    throw err
-                                } else {
-                                    Pembelajaran.read()
-                                }
-                            })
+        rl.question('NIM        : ', (nim) => {
+            rl.question('id matakuliah  : ', (id_matakuliah) => {
+                rl.question(`id dosen    :`, (id_dosen) => {
+                    rl.question('nilai      :', (nilai) => {
+                        db.get(tambahPembelajaran, [nim, id_matakuliah, id_dosen, nilai], (err) => {
+                            if (err) {
+                                throw err
+                            } else {
+                                Pembelajaran.read()
+                            }
                         })
                     })
-
                 })
+
             })
-        
+        })
+
     }
     static hapus() {
         const hapusPembelajaran = 'DELETE FROM pembelajaran WHERE pembelajaran.no = ?'
@@ -468,8 +468,15 @@ class Interface {
                     Menu.menu_pembelajaran()
                     break;
                 case '6':
-                    console.log('Terimakasih')
+                    console.log('Anda telah keluar.')
                     rl.close()
+                    break;
+                default:
+                    console.log(garis)
+                    console.log('Masukkan pilihan dengan benar')
+                    Interface.readline()
+                    break;
+
             }
         }
         )
@@ -492,6 +499,11 @@ class Interface {
                 case '5':
                     Menu.menu_awal()
                     break;
+                default:
+                    console.log(garis)
+                    console.log('Masukkan pilihan dengan benar')
+                    Interface.mahasiswa()
+                    break;
             }
         })
     }
@@ -512,6 +524,11 @@ class Interface {
                     break;
                 case '5':
                     Menu.menu_awal()
+                    break;
+                default:
+                    console.log(garis)
+                    console.log('Masukkan pilihan dengan benar')
+                    Interface.jurusan()
                     break;
             }
         })
@@ -534,6 +551,11 @@ class Interface {
                 case '5':
                     Menu.menu_awal()
                     break;
+                default:
+                    console.log(garis)
+                    console.log('Masukkan pilihan dengan benar')
+                    Interface.dosen()
+                    break;
             }
         })
     }
@@ -555,6 +577,11 @@ class Interface {
                 case '5':
                     Menu.menu_awal()
                     break;
+                default:
+                    console.log(garis)
+                    console.log('Masukkan pilihan dengan benar')
+                    Interface.matakuliah()
+                    break;
             }
         })
     }
@@ -575,6 +602,11 @@ class Interface {
                     break;
                 case '5':
                     Menu.menu_awal()
+                    break;
+                default:
+                    console.log(garis)
+                    console.log('Masukkan pilihan dengan benar')
+                    Interface.pembelajaran()
                     break;
             }
         })
