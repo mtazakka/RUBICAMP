@@ -4,3 +4,5 @@ kurang Autoincrement ketika dihapus gk reset
 
 Update Challange 19
 baru selesai, baca materi
+
+05 agustus challange 19 selesai
