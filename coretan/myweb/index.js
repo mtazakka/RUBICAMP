@@ -32,8 +32,7 @@ app.get('/delete/:id', (req, res) => {
   res.redirect('/')
 })   
 app.get('/edit/:id', (req, res) => {
-  const index = req.params.id
-  res.render('edit', {item : data[index]})
+  res.render('edit', {item : data[req.params.id], index: parseInt(req.params.id)})
 })
 
 app.post('/edit/:id', (req, res) => {
