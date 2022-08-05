@@ -14,7 +14,7 @@ export class Kontrak {
         })
     }
     static tambah(nim, id_matakuliah, id_dosen, /*nilai,*/ callback) {
-        const tambahKontrak = `INSERT INTO kontrak(nim, id_matakuliah, id_dosen, nilai) values (?, ? ,?, " " )`
+        const tambahKontrak = `INSERT INTO kontrak(nim, id_matakuliah, id_dosen, nilai) values (?, ? ,?)`
         db.get(tambahKontrak, [nim, id_matakuliah, id_dosen, /*nilai*/], (err) => { callback(err) })
     }
     static hapus(no, callback){

@@ -16,7 +16,7 @@ import { KontrakController } from './controller/KontrakController.js';
 import { MatakuliahController } from './controller/MatakuliahController.js';
 export const db = new sqlite3.Database('./university.db', sqlite3.OPEN_READWRITE, (err) => {
     if (err) return console.error(err.message);
-});
+});  
 
 
 export const garis = ('====================================================')

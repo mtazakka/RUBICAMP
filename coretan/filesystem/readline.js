@@ -13,7 +13,7 @@ rl.on('line', (line) => {
       console.log('world!');
       break;
     default:
-      console.log(`Say what? I might have h eard '${line.trim()}'`);
+      console.log(`Say what? I might have heard '${line.trim()}'`);
       break;
   }
   rl.prompt();
