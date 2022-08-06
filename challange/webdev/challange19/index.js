@@ -44,7 +44,7 @@ app.get('/edit/:id', (req, res) => {
 
 app.post('/edit/:id', (req, res) => {
   const index = req.params.id
-  data[index] = ({string: req.body.string, integer: req.body.integer, float: req.body.float, date: req.body.date, boolean:req.body.booelan}) 
+  data[index] = ({string: req.body.string, integer: req.body.integer, float: req.body.float, date: req.body.date, boolean:req.body.boolean}) 
   fs.writeFileSync('database.json', JSON.stringify(data))
   res.redirect('/')
 })
