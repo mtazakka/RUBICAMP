@@ -6,3 +6,4 @@ Update Challange 19
 baru selesai, baca materi
 
 05 agustus challange 19 selesai
+06 agustus rewatch express dan express generator
