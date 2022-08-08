@@ -8,45 +8,35 @@
     <title>Document</title>
     <link rel="stylesheet" href="/css/style.css">
     <!--ini masukin file css-->
+    <script>
+        function myFunction() {
+            var checkBox = document.getElementById("filters")
+            var filter = document.getElementById(filter)
+            if (checkBox.checked == true) {
+                filter.style.display = 'block'
+            } else {
+                filter.style.display = 'none'
+            }
+
+        }
+    </script>
+
 </head>
 
 <body>
     <div class="container">
         <h1>BREAD (Browse, Read, Edit, Add, Delete)</h1>
+
         <div class="filters">
             <h2>Filters</h2>
             <form action="" method="get">
-                <table>
-                    <tr>
-                        <td><input type="checkbox" name="filters" id="filters"><label for="string">String</label></td>
-                        <td><input type="text" name="string" id="string" placeholder="String"></td>
-                        <!--<td><textarea id="string" name="string" placeholder="String"></textarea></td>-->
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" name="filters" id="filters"><label for="integer">Integer</label></td>
-                        <td><input type="number" name="integer" id="integer" placeholder="Integer"></td>
-                        <!--<td><textarea id="integer" name="integer" placeholder="Integer"></textarea></td>-->
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" name="filters" id="filters"><label for="float">Float</label></td>
-                        <td><input type="number" step="0.005" name="float" id="float" placeholder="Float"></td>
-                        <!--<td><textarea id="float" name="float" placeholder="Float"></textarea></td>-->
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" name="filters" id="filters"><label for="date">Date</label></td>
-                        <td><input type="date" name="date" id="date" value="kosong" placeholder="yyyy/mm/dd"></td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" name="filters" id="filters"><label for="boolean">Boolean</label></td>
-                        <td>
-                            <select name="boolean" id="boolean">
-                                <option value="">Choose the boolean....</option>
-                                <option value="true">true</option>
-                                <option value="false">false</option>
-                        </td>
-                    </tr>
-                </table>
-                <button type="search" class="btn btn-search">Search</button>
+                <input type="hidden" name="page" value="1">
+                <input type="checkbox" name="string" id="string"><label for="string">String</label></td>
+
+
+
+
+                <button type="submit" class="btn btn-search">Search</button>
                 <a href="/" class="btn btn-warning">Reset</a>
             </form>
             <hr>
@@ -95,28 +85,14 @@
             </table>
             <div>
                 <div class="pagination">
-                    <li>
-                        <a href="#">Previous</a>
-                    </li>
-                    <li>
-                        <a href="#">1</a>
-                    </li>
-                    <li>
-                        <a href="#">Nest</a>
-                    </li>
-
-
-                    <table>
-                        <tr>
-                            <td><a href="/">Previous</a></button>
-                            <td><a href="/">1</a></button>
-                            <td><a href="/">2</a></button>
-                            <td><a href="/">3</a></button>
-                            <td><a href="/">Next</a></button>                
-                            </td>
-
-                        </tr>
-                    </table>
+                    <a href="/?page=<%= previous %>">Previous</a>
+                    <% for(let i=1; i<=pages; i++){%>
+                        <a class="<%= i == page ? 'active' : ''%>"
+                            href="<%= url.replace(`page=${page}`,`page=${i}`) %>">
+                            <%= i %>
+                        </a>
+                        <% }%>
+                            <a href="/?page=<%= next %>">Next</a>
                 </div>
                 <div>
                     <a href="/add"><button class="btn btn-add"> Add </button></a>

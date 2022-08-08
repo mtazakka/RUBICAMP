@@ -38,6 +38,7 @@
 
 .btn-add {
   background-color: #2196F3;
+  float: right;
 }
 
 .btn-add:hover {
@@ -160,27 +161,33 @@ input[type="date" i] {
   padding-top: 12px;
 }
 
-.pagination table,
-.pagination td {
-  border: 1px solid #999;
-  border-collapse: collapse;
-  padding: 4px 6px;
-  margin-bottom: 10px;
-  color: #2196F3;
-  text-decoration: none;
+.pagination {
+  float: left;
+  
 }
 
-.btn-pagination {
-  background-color: white;
-  text-decoration: none;
+.pagination a {
   color: #2196F3;
-  border: 0px;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid #ddd;
 }
 
-.pagination td:hover {
-  background: lightgray;
+.pagination a.active {
+  background-color: #0b7dda ;
+  color: white;
+  /* border: 1px solid #4CAF50; */
 }
-.pagination td a {
-  color: #2196F3;
-  text-decoration: none;
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+.pagination a:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.pagination a:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
