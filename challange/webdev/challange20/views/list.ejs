@@ -8,46 +8,130 @@
     <title>Document</title>
     <link rel="stylesheet" href="/css/style.css">
     <!--ini masukin file css-->
+
 </head>
 
 <body>
-<div class="container">
-    <h1>BREAD (Browse, Read, Edit, Add, Delete)</h1>
-    <div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>String</th>
-                <th>Integer</th>
-                <th>Float</th>
-                <th>Date</th>
-                <th>Boolean</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% data.forEach((item, index) => { %>
-            <tr>
-                <td><%= index+1 %></td>
-                <td><%= item.string %></td>
-                <td><%= item.integer %></td>
-                <td><%= item.float %></td>
-                <td><%= item.date %></td>
-                <td><%= item.boolean %></td>
-                <td>
-                    <a href="/edit/<%= index %>"><button class="btn btn-edit" > EDIT </button></a>
-                    <a href="/delete/<%= index %>"><button class="btn btn-delete" > DELETE </button></a>
-                </td>
-            </tr>
-            <% }) %>
-        </tbody>
-    </table>
-    <a href="/add"><button class="btn btn-add" > Add </button></a>
-    </div>
-</div>
+    <div class="container">
+        <h1>BREAD (Browse, Read, Edit, Add, Delete)</h1>
+<hr>
+        <div class="filters">
+            <h2>Filters</h2>
+            <form action="" method="get">
+                <input type="hidden" name="page" value="1">
+                <table>
+                    <tr>
+                        <td><input type="checkbox" name="stringFilters" id="filters" <%=query.stringFilters =='on' ? 'checked' : '' %>>
+                            <label for=" stringCheck">String</label>
+                        </td>
+                        <td><input type="text" name="string" placeholder="String" value="<%= query.string %>"></td>
 
-    
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="integerFilters" id="filters" <%=query.integerFilters =='on' ? 'checked' : '' %>><label
+                                for="integer">Integer</label></td>
+                        <td><input type="number" name="integer" id="filter" placeholder="Integer"
+                                value="<%= query.integer %>"></td>
+
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="floatFilters" id="filters" <%=query.floatFilters =='on' ? 'checked' : '' %>><label for="float">Float</label>
+                        </td>
+                        <td><input type="number" step="0.005" name="filter" id="float" placeholder="Float"
+                                value="<%= query.float %>">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="dateFilters" id="filters" <%=query.dateFilters =='on' ? 'checked' : '' %>><label for=" date">Date</label>
+                        </td>
+                        <td><input type="date" name="startDate" id="filter" placeholder="yyyy/mm/dd"
+                                value="<%= query.startDate %>">
+                            <p>to</p>
+                            <input type="date" name="toDate" id="filter" placeholder="yyyy/mm/dd"
+                                value="<%= query.toDate %>">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="booleanFilters" id="filters" <%=query.booleanFilters =='on' ? 'checked' : '' %>><label
+                                for="boolean">Boolean</label></td>
+                        <td>
+                            <select name="boolean" id="filter">
+                                <option value="">Choose the boolean....</option>
+                                <option value="true" <%=query.boolean=='true' ? 'selected' : '' %>>true</option>
+                                <option value="false" <%=query.boolean=='false' ? 'selected' : '' %>>false</option>
+                        </td>
+                    </tr>
+
+                </table>
+                <button type="submit" class="btn btn-search">Search</button>
+                <a href="/" class="btn btn-warning">Reset</a>
+            </form>
+            <hr>
+        </div>
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>String</th>
+                        <th>Integer</th>
+                        <th>Float</th>
+                        <th>Date</th>
+                        <th>Boolean</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% data.forEach((item, index)=> { %>
+                        <tr>
+                            <td>
+                                <%= item.id %>
+                            </td>
+                            <td>
+                                <%= item.string %>
+                            </td>
+                            <td>
+                                <%= item.integer %>
+                            </td>
+                            <td>
+                                <%= item.float %>
+                            </td>
+                            <td>
+                                <%= item.date %>
+                            </td>
+                            <td>
+                                <%= item.boolean %>
+                            </td>
+                            <td>
+                                <a href="/edit/<%= item.id %>"><button class="btn btn-edit"> EDIT </button></a>
+                                <a href="/delete/<%= item.id %>"><button class="btn btn-delete"> DELETE </button></a>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+            <div>
+                <br>
+                <div class="pagination">
+                    <a href="<%= url.replace(`page=${page}`,`page=${previous}`) %>">Previous</a>
+                    <% for(let i=1; i<=pages; i++){%>
+                        <a class="<%= i == page ? 'active' : ''%>"
+                            href="<%= url.replace(`page=${page}`,`page=${i}`) %>">
+                            <%= i %>
+                        </a>
+                        <% }%>
+                            <a href="<%= url.replace(`page=${page}`,`page=${next}`) %>">Next</a>
+                </div>
+                <div>
+                    <a href="/add"><button class="btn btn-add"> Add </button></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
 
 </body>
 
