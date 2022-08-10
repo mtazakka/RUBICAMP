@@ -135,6 +135,7 @@ app.get('/edit/:id', (req, res) => {
       console.log('Failed to read')
       throw err;
     }
+    console.log(item)
     res.render('edit', { item, index })   /* res render = menerima dari file */
   })
 })

@@ -14,28 +14,30 @@
 <body>
     <div class="container">
         <h1>BREAD (Browse, Read, Edit, Add, Delete)</h1>
-<hr>
+        <hr>
         <div class="filters">
             <h2>Filters</h2>
             <form action="" method="get">
                 <input type="hidden" name="page" value="1">
                 <table>
                     <tr>
-                        <td><input type="checkbox" name="stringFilters" id="filters" <%=query.stringFilters =='on' ? 'checked' : '' %>>
+                        <td><input type="checkbox" name="stringFilters" id="filters" <%=query.stringFilters=='on'
+                                ? 'checked' : '' %>>
                             <label for=" stringCheck">String</label>
                         </td>
                         <td><input type="text" name="string" placeholder="String" value="<%= query.string %>"></td>
 
                     </tr>
                     <tr>
-                        <td><input type="checkbox" name="integerFilters" id="filters" <%=query.integerFilters =='on' ? 'checked' : '' %>><label
-                                for="integer">Integer</label></td>
+                        <td><input type="checkbox" name="integerFilters" id="filters" <%=query.integerFilters=='on'
+                                ? 'checked' : '' %>><label for="integer">Integer</label></td>
                         <td><input type="number" name="integer" id="filter" placeholder="Integer"
                                 value="<%= query.integer %>"></td>
 
                     </tr>
                     <tr>
-                        <td><input type="checkbox" name="floatFilters" id="filters" <%=query.floatFilters =='on' ? 'checked' : '' %>><label for="float">Float</label>
+                        <td><input type="checkbox" name="floatFilters" id="filters" <%=query.floatFilters=='on'
+                                ? 'checked' : '' %>><label for="float">Float</label>
                         </td>
                         <td><input type="number" step="0.005" name="filter" id="float" placeholder="Float"
                                 value="<%= query.float %>">
@@ -43,7 +45,8 @@
 
                     </tr>
                     <tr>
-                        <td><input type="checkbox" name="dateFilters" id="filters" <%=query.dateFilters =='on' ? 'checked' : '' %>><label for=" date">Date</label>
+                        <td><input type="checkbox" name="dateFilters" id="filters" <%=query.dateFilters=='on'
+                                ? 'checked' : '' %>><label for=" date">Date</label>
                         </td>
                         <td><input type="date" name="startDate" id="filter" placeholder="yyyy/mm/dd"
                                 value="<%= query.startDate %>">
@@ -53,8 +56,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox" name="booleanFilters" id="filters" <%=query.booleanFilters =='on' ? 'checked' : '' %>><label
-                                for="boolean">Boolean</label></td>
+                        <td><input type="checkbox" name="booleanFilters" id="filters" <%=query.booleanFilters=='on'
+                                ? 'checked' : '' %>><label for="boolean">Boolean</label></td>
                         <td>
                             <select name="boolean" id="filter">
                                 <option value="">Choose the boolean....</option>
