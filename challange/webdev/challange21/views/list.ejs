@@ -76,15 +76,16 @@
                 </div>
                 <br>
                 <hr>
-                <table class="table table-striped" style="text-align:center;" >
+                <table id="sortTable" class="table table-striped" style="text-align:center;" >
                     <thead >
+                   
                         <tr>
-                            <th>Id</th>
-                            <th>String</th>
-                            <th>Integer</th>
-                            <th>Float</th>
-                            <th>Date</th>
-                            <th>Boolean</th>
+                            <th onclick="sortByNum(0)"><i class="fa-solid fa-sort"></i>Id</th>
+                            <th onclick="sortByAlph(1)">String</th>
+                            <th onclick="sortByAlph(2)">Integer</th>
+                            <th onclick="sortByNum(3)">Float</th>
+                            <th onclick="sortByAlph(4)">Date</th>
+                            <th onclick="sortByAlph(5)">Boolean</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -119,21 +120,16 @@
                 </table>
             </div>
             <div class="card-footer">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination" style="float:left ;">
-                        <li class="page-item"><a class="page-link"
-                                href="<%= url.replace(`page=${page}`,`page=${previous}`) %>">Previous</a></li>
+                    <div class="pagination" style="float:left">
+                        <a href="<%= url.replace(`page=${page}`,`page=${previous}`) %>">Previous</a>
                         <% for(let i=1; i<=pages; i++){%>
-                            <li class="page-item"><a class="page-link"
-                                    href="<%= url.replace(`page=${page}`,`page=${i}`) %>">
-                                    <%= i %>
-                                </a>
-                                <% }%>
-                            </li>
-                            <li class="page-item"><a class="page-link"
-                                    href="<%= url.replace(`page=${page}`,`page=${next}`) %>">Next</a></li>
-                    </ul>
-                </nav>
+                            <a class="<%= i == page ? 'active' : ''%>"
+                                href="<%= url.replace(`page=${page}`,`page=${i}`) %>">
+                                <%= i %>
+                            </a>
+                            <% }%>
+                                <a href="<%= url.replace(`page=${page}`,`page=${next}`) %>">Next</a>
+                    </div>
                 <a href="/add" class="btn btn-primary" style="float:right ;">Add</a>
             </div>
         </div>
