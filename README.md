@@ -10,3 +10,5 @@ baru selesai, baca materi
 07 agustus Paganation
 08 Agustus Filter
 09 Agustus Login, LogOut, SignUp
+10 Agustus sisa sort
+11 Agustus Sort
