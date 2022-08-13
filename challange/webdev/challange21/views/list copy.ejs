@@ -46,7 +46,7 @@
 
                         <div class="row mb-3">
                             <div class="col-sm-3">
-                                <input type="checkbox" name="dateFilters" id="date" <%=query.dateFilters=='on'
+                                <input type="checkbox" name="dateFilters" id="date" <%=query.integerDate=='on'
                                     ? 'checked' : '' %>><label for="date" class="col-sm-3 col-form-label">date</label>
                             </div>
                             <div class="col-sm-9">
@@ -60,14 +60,14 @@
 
                         <fieldset class="row mb-3">
                             <div class="col-sm-3">
-                                <input type="checkbox" name="booleanFilters" id="boolean" <%=query.booleanFilters=='on'
+                                <input type="checkbox" name="booleanFilters" id="boolean" <%=query.integerBoolean=='on'
                                     ? 'checked' : '' %>><label class="col-form-label col-sm-3 pt-0" for="boolean">Boolean</label>
                                 </div>
                             <div class="col-sm-9">
                                 <select class="form-select" id="boolean" name="boolean">
-                                    <option value="null" selected>Choose...</option>
-                                    <option value="true" <%=query.boolean=='true' ? 'selected' : '' %>>true</option>
-                                    <option value="false" <%=query.boolean=='false' ? 'selected' : '' %>>false</option>
+                                    <option>Choose...</option>
+                                    <option value="true">true</option>
+                                    <option value="false">false</option>
                                 </select>
                         </fieldset>
                         <button type="submit" class="btn btn-primary">Search</button>
@@ -80,10 +80,9 @@
                     <thead >
                    
                         <tr>
-                            <th>
-                        <a href="<%= url %><%= sortBy == 'id' && order == 'asc' ? '&sortBy=id&order=desc' : '&sortBy=id&order=asc' %>">ID</a>
-                                </th>
-                                
+                            <th> 
+                                <!-- <a href="/?page=1<%= sortBy == 'id' && order == 'asc' ? '&sortBy=id$order=desc' : '&sortBy=id' '&order=asc'%>">ID</a>
+                                </th> -->
                             <th onclick="sortByAlph(1)">String</th>
                             <th onclick="sortByAlph(2)">Integer</th>
                             <th onclick="sortByNum(3)">Float</th>

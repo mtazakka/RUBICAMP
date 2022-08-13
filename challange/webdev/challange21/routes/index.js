@@ -5,15 +5,7 @@ const moment = require('moment')
 
 
 module.exports = function (db) {
-  // router.get('/', function (req, res, next) {
-  //   db.query('SELECT * FROM todos', (err, data) => {
-  //     if (err) return res.send(err)
-  //     res.render('list', { data: data.rows })
-  //   })
-  // });
-
-//----------------Add---------------//
-//--------ROUTER--------------------
+// Sort ?? 
 
 router.get('/', (req, res) => { /* /...adalah router */
   const page = req.query.page || 1
@@ -22,6 +14,8 @@ router.get('/', (req, res) => { /* /...adalah router */
   const limit = 3
   const offset = (page - 1) * limit
   const url = req.url == '/' ? '/?page=1' : req.url
+  const sortBy = req.query.body == undefined ? "id" : req.query.sortBy
+  const order = req.query.order == undefined ? "asc" : req.query.order
 
   //searching
   const params = []
@@ -74,14 +68,18 @@ router.get('/', (req, res) => { /* /...adalah router */
     if (params.length > 0)
       sql += ` WHERE ${params.join(' AND ')}`
 
-    sql += ` LIMIT $${counter++} OFFSET $${counter++}`
+    sql += `  ORDER BY ${sortBy} ${order} LIMIT $${counter++} OFFSET $${counter++}`
+
+    // sql += `  LIMIT $${counter++} OFFSET $${counter++}`
 
     db.query(sql, [...values, limit, offset], (err, data) => {
+      console.log(sql)
+      console.log([...values, limit, offset])
       if (err) {
         console.log('Failed to read')
         throw err;
       }
-      res.render('list', { rows: data, data:data.rows, page, pages, previous, next, query: req.query, url })   /* res render = menerima dari file */
+      res.render('list', { rows: data, data:data.rows, page, pages, previous, next, query: req.query, url, sortBy, order })   /* res render = menerima dari file */
     })
   })
 })
