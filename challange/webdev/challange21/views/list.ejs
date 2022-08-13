@@ -2,7 +2,7 @@
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <h1>BREAD(Browse, Read, Edit, Add, Delete)</h1>
+                <h1 style="text-align:center">BREAD(Browse, Read, Edit, Add, Delete)</h1>
                 <h2>Filters</h2>
             </div>
             <div class="card-body">
@@ -50,19 +50,20 @@
                                     ? 'checked' : '' %>><label for="date" class="col-sm-3 col-form-label">date</label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="date" class="form-control" name="startDate" id="filter" placeholder="yyyy/mm/dd"
-                                    value="<%= query.startDate %>">
+                                <input type="date" class="form-control" name="startDate" id="filter"
+                                    placeholder="yyyy/mm/dd" value="<%= query.startDate %>">
                                 <p style="padding-top:7px;">to</p>
-                                <input type="date" class="form-control" name="toDate" id="filter" placeholder="yyyy/mm/dd"
-                                    value="<%= query.toDate %>">
+                                <input type="date" class="form-control" name="toDate" id="filter"
+                                    placeholder="yyyy/mm/dd" value="<%= query.toDate %>">
                             </div>
                         </div>
 
                         <fieldset class="row mb-3">
                             <div class="col-sm-3">
                                 <input type="checkbox" name="booleanFilters" id="boolean" <%=query.booleanFilters=='on'
-                                    ? 'checked' : '' %>><label class="col-form-label col-sm-3 pt-0" for="boolean">Boolean</label>
-                                </div>
+                                    ? 'checked' : '' %>><label class="col-form-label col-sm-3 pt-0"
+                                    for="boolean">Boolean</label>
+                            </div>
                             <div class="col-sm-9">
                                 <select class="form-select" id="boolean" name="boolean">
                                     <option value="null" selected>Choose...</option>
@@ -76,19 +77,58 @@
                 </div>
                 <br>
                 <hr>
-                <table id="sortTable" class="table table-striped" style="text-align:center;" >
-                    <thead >
-                   
+                <table id="sortTable" class="table table-striped" style="text-align:center;">
+                    <thead>
+
                         <tr>
                             <th>
-                        <a href="<%= url %><%= sortBy == 'id' && order == 'asc' ? '&sortBy=id&order=desc' : '&sortBy=id&order=asc' %>">ID</a>
-                                </th>
-                                
-                            <th onclick="sortByAlph(1)">String</th>
-                            <th onclick="sortByAlph(2)">Integer</th>
-                            <th onclick="sortByNum(3)">Float</th>
-                            <th onclick="sortByAlph(4)">Date</th>
-                            <th onclick="sortByAlph(5)">Boolean</th>
+                                <a href="/?page=1<%= sortBy == 'id' && order == 'asc' ? '&sortBy=id&order=desc' : '&sortBy=id&order=asc' %>"
+                                    style="text-decoration:none; color: black;"
+                                    <% if(sortBy == 'id' && order == 'asc' ){ %> <i class="fa-solid fa-sort-up"></i
+                                    <% } else if (sortBy == 'id' && order == 'desc' ){ %> <i class="fa-solid fa-sort-down"></i
+                                    <% } else { %> <i class="fa-solid fa-sort"></i <% } %>
+                                        > ID</a>
+                            </th>
+                            <th>
+                                <a href="/?page=1<%= sortBy == 'string' && order == 'asc' ? '&sortBy=string&order=desc' : '&sortBy=string&order=asc' %>"
+                                    style="text-decoration:none; color: black;"
+                                    <% if(sortBy == 'string' && order == 'asc' ){ %> <i class="fa-solid fa-sort-up"></i
+                                    <% } else if (sortBy == 'string' && order == 'desc' ){ %> <i class="fa-solid fa-sort-down"></i
+                                    <% } else { %> <i class="fa-solid fa-sort"></i <% } %>
+                                        > String</a>
+                            </th>
+                            <th>
+                                <a href="/?page=1<%= sortBy == 'integer' && order == 'asc' ? '&sortBy=integer&order=desc' : '&sortBy=integer&order=asc' %>"
+                                    style="text-decoration:none; color: black;"
+                                    <% if(sortBy == 'integer' && order == 'asc' ){ %> <i class="fa-solid fa-sort-up"></i
+                                    <% } else if (sortBy == 'integer' && order == 'desc' ){ %> <i class="fa-solid fa-sort-down"></i
+                                    <% } else { %> <i class="fa-solid fa-sort"></i <% } %>
+                                        > Integer</a>
+                            </th>
+                            <th>
+                                <a href="/?page=1<%= sortBy == 'float' && order == 'asc' ? '&sortBy=float&order=desc' : '&sortBy=float&order=asc' %>"
+                                    style="text-decoration:none; color: black;"
+                                    <% if(sortBy == 'float' && order == 'asc' ){ %> <i class="fa-solid fa-sort-up"></i
+                                    <% } else if (sortBy == 'float' && order == 'desc' ){ %> <i class="fa-solid fa-sort-down"></i
+                                    <% } else { %> <i class="fa-solid fa-sort"></i <% } %>
+                                        > Float</a>
+                            </th>
+                            <th>
+                                <a href="/?page=1<%= sortBy == 'date' && order == 'asc' ? '&sortBy=date&order=desc' : '&sortBy=date&order=asc' %>"
+                                    style="text-decoration:none; color: black;"
+                                    <% if(sortBy == 'date' && order == 'asc' ){ %> <i class="fa-solid fa-sort-up"></i
+                                    <% } else if (sortBy == 'date' && order == 'desc' ){ %> <i class="fa-solid fa-sort-down"></i
+                                    <% } else { %> <i class="fa-solid fa-sort"></i <% } %>
+                                        > Date</a>
+                            </th>
+                            <th>
+                                <a href="/?page=1<%= sortBy == 'date' && order == 'asc' ? '&sortBy=date&order=desc' : '&sortBy=date&order=asc' %>"
+                                    style="text-decoration:none; color: black;"
+                                    <% if(sortBy == 'date' && order == 'asc' ){ %> <i class="fa-solid fa-sort-up"></i
+                                    <% } else if (sortBy == 'date' && order == 'desc' ){ %> <i class="fa-solid fa-sort-down"></i
+                                    <% } else { %> <i class="fa-solid fa-sort"></i <% } %>
+                                        > Boolean</a>
+                            </th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -123,16 +163,16 @@
                 </table>
             </div>
             <div class="card-footer">
-                    <div class="pagination" style="float:left">
-                        <a href="<%= url.replace(`page=${page}`,`page=${previous}`) %>">Previous</a>
-                        <% for(let i=1; i<=pages; i++){%>
-                            <a class="<%= i == page ? 'active' : ''%>"
-                                href="<%= url.replace(`page=${page}`,`page=${i}`) %>">
-                                <%= i %>
-                            </a>
-                            <% }%>
-                                <a href="<%= url.replace(`page=${page}`,`page=${next}`) %>">Next</a>
-                    </div>
+                <div class="pagination" style="float:left">
+                    <a href="<%= url.replace(`page=${page}`,`page=${previous}`) %>">Previous</a>
+                    <% for(let i=1; i<=pages; i++){%>
+                        <a class="<%= i == page ? 'active' : ''%>"
+                            href="<%= url.replace(`page=${page}`,`page=${i}`) %>">
+                            <%= i %>
+                        </a>
+                        <% }%>
+                            <a href="<%= url.replace(`page=${page}`,`page=${next <= pages ? next : page}`) %>">Next</a>
+                </div>
                 <a href="/add" class="btn btn-primary" style="float:right ;">Add</a>
             </div>
         </div>

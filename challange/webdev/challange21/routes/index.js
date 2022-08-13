@@ -9,13 +9,13 @@ module.exports = function (db) {
 
 router.get('/', (req, res) => { /* /...adalah router */
   const page = req.query.page || 1
-  const previous = parseInt(page) - 1
+  const previous = (parseInt(page) - 1) == 0 ? 1 : (parseInt(page) - 1)
   const next = parseInt(page) + 1
   const limit = 3
   const offset = (page - 1) * limit
   const url = req.url == '/' ? '/?page=1' : req.url
-  const sortBy = req.query.body == undefined ? "id" : req.query.sortBy
-  const order = req.query.order == undefined ? "asc" : req.query.order
+  var sortBy = req.query.sortBy == undefined ? "id" : req.query.sortBy
+  var order = req.query.order == undefined ? "asc" : req.query.order
 
   //searching
   const params = []
@@ -68,13 +68,9 @@ router.get('/', (req, res) => { /* /...adalah router */
     if (params.length > 0)
       sql += ` WHERE ${params.join(' AND ')}`
 
-    sql += `  ORDER BY ${sortBy} ${order} LIMIT $${counter++} OFFSET $${counter++}`
-
-    // sql += `  LIMIT $${counter++} OFFSET $${counter++}`
-
+    sql += ` ORDER BY ${sortBy} ${order} LIMIT $${counter++} OFFSET $${counter++}`
     db.query(sql, [...values, limit, offset], (err, data) => {
-      console.log(sql)
-      console.log([...values, limit, offset])
+
       if (err) {
         console.log('Failed to read')
         throw err;
